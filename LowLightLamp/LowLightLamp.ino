@@ -25,7 +25,7 @@ void setup(){
   lightMeter.configure(0x10);
 
   pinMode(relayOutputPin, OUTPUT);
-  digitalWrite(relayOutputPin, LOW);
+  digitalWrite(relayOutputPin, HIGH); // reverse
 }
 
 void loop() {
@@ -44,9 +44,9 @@ void loop() {
 
   // turn on light when enough low light level events have been detected
   if (lowLightCount >= lowLightCountTrigger) {
-    digitalWrite(relayOutputPin, HIGH);
+    digitalWrite(relayOutputPin, LOW); // reverse
   } else if (lowLightCount == 0) {
-    digitalWrite(relayOutputPin, LOW);
+    digitalWrite(relayOutputPin, HIGH); // reverse
   }
 
   delay(1000);

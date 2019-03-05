@@ -19,7 +19,7 @@ void setup() {
   pinMode(potPin, INPUT);
   pinMode(ledPin, OUTPUT);
   pinMode(relayPin, OUTPUT);
-  digitalWrite(relayPin, LOW);
+  digitalWrite(relayPin, HIGH); // reverse
 
   // startup led sequence
   digitalWrite(ledPin, HIGH);
@@ -69,7 +69,7 @@ void loop() {
 
       // drive the relay and led indicator on
       digitalWrite(ledPin, HIGH);
-      digitalWrite(relayPin, HIGH);
+      digitalWrite(relayPin, LOW); // reverse
 
     } else if (relayOnStart < relayOnEnd) {
       // delay continuation. simply count up towards the end times
@@ -79,7 +79,7 @@ void loop() {
     } else {
       // drive the relay and led indicator orff
       digitalWrite(ledPin, LOW);
-      digitalWrite(relayPin, LOW);
+      digitalWrite(relayPin, HIGH); // reverse
       // Serial.println((relayOnEnd - relayOnStart) / 1000);
       relayOnEnd = 0;
       relayOnStart = 0;
